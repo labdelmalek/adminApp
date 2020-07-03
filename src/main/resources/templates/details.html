@@ -1,0 +1,153 @@
+ <!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Admin App</title>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+ <!--  <th:block th:include="/nav"></th:block>-->
+<nav style="border-radius:0;" class="navbar navbar-inverse">
+ 
+  
+    <ul class="nav navbar-nav">
+      <li class="active"><a th:href="@{agences}">Acceuil</a></li>
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" th:href="@{agences}">Agence
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{postagence}">Ajouter agence</a></li>
+         
+          <li><a th:href="@{agences}">Agences</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" th:href="@{banquiers}">Banquier
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{postbanquier}">Ajouter banquier</a></li>
+          <li><a th:href="@{banquiers}">Acceder aux banquiers</a></li>
+         
+        </ul>
+      </li>
+      
+      
+     <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" th:href="@{admins}">Admin
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{postadmin}">Ajouter Admin</a></li>
+          <li><a th:href="@{admins}">Acceder aux admins</a></li>
+         
+        </ul>
+      </li>
+      
+      
+      
+      
+          </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a th:href="@{logout}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  
+</nav>
+<div class="container">
+
+<div class="panel panel-default">
+<div class="panel-heading"><span style="bold">Les details du dossier sont :</span></div>
+<div class="panel-body">
+<table class="table">
+<tbody><tr>
+<td>ID :</td>
+<td th:text="${details.id}"></td>
+
+</tr>
+<tr>
+<td>Nom :</td>
+<td th:text="${details.nom}"></td>
+
+</tr><tr>
+<td>Prenom :</td>
+<td th:text="${details.prenom}"></td>
+
+</tr><tr>
+<td>Cin :</td>
+<td th:text="${details.cin}"></td>
+
+</tr><tr>
+<td>Salaire :</td>
+<td th:text="${details.salaire}"></td>
+
+</tr><tr>
+<td>Employee :</td>
+<td th:text="${details.typeemployee}"></td>
+
+</tr>
+<tr>
+<td>Solde compte :</td>
+<td th:text="${details.sommeclient}"></td>
+
+</tr>
+
+
+<tr>
+<td>Type credit :</td>
+<td th:text="${details.typecredit}"></td>
+
+</tr>
+<tr>
+<td>Montant credit :</td>
+<td th:text="${details.montantcredit}"></td>
+
+</tr><tr>
+<td>Durée(en mois) :</td>
+<td th:text="${details.nombremois}"></td>
+
+</tr><tr>
+<td>Mensualité :</td>
+<td th:text="${details.mensualite}"></td>
+
+</tr><tr>
+<td>Date demande  :</td>
+<td th:text="${details.datedemande}"></td>
+
+</tr><tr>
+<td>Agence n° :</td>
+<td th:text="${details.idagence}"></td>
+
+</tr>
+<tr>
+<td>Credit n° :</td>
+<td th:text="${details.idcredit}"></td>
+
+</tr>
+
+
+
+
+</tbody>
+</table>
+
+<div class="pb-5">
+<a th:href="@{acceptercredit(id=${details.idcredit},ida=${details.idagence})}" class="btn btn-success"><img style="width:15px;height:auto;" src="../img/credit.png"> Valider credit</a>
+
+<a th:href="@{rejetercredit(id=${details.idcredit},ida=${details.idagence})}" class="btn btn-danger"><img style="width:15px;height:auto;" src="../img/effacer.png"> Rejeter credit</a>
+</div>
+
+<div class="alert alert-danger" style="margin-top:30px;" th:if="${cond == 2}" role="alert">
+ Attention ! La situation de mensualité de crédit dépasse 40% de son salaire !
+</div>
+
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

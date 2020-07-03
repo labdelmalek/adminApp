@@ -1,0 +1,124 @@
+  <!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Admin App</title>
+
+   
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+ <!--  <th:block th:include="/nav"></th:block>-->
+<nav style="border-radius:0;" class="navbar navbar-inverse">
+ 
+  
+    <ul class="nav navbar-nav">
+      <li class="active"><a th:href="@{agences}">Acceuil</a></li>
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" th:href="@{agences}">Agence
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{postagence}">Ajouter agence</a></li>
+         
+          <li><a th:href="@{agences}">Agences</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" th:href="@{banquiers}">Banquier
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{postbanquier}">Ajouter banquier</a></li>
+          <li><a th:href="@{banquiers}">Acceder aux banquiers</a></li>
+         
+        </ul>
+      </li>
+      
+      
+     <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" th:href="@{admins}">Admin
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{postadmin}">Ajouter Admin</a></li>
+          <li><a th:href="@{admins}">Acceder aux admins</a></li>
+         
+        </ul>
+      </li>
+      
+      
+      
+      
+          </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a th:href="@{logout}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  
+</nav>
+<div class="panel panel-default col-lg-6 col-sm-6 " style="margin-left:24%">
+<div class="panel-header"><h1 style="text-align:center;padding-bottom:30px;border-bottom:1px solid grey">Ajouter Admin</h1></div>
+<div class="panel-body">
+<form th:action="@{addadmin}"   th:object="${admin}" method="post">
+ 
+  <div class="form-row">
+   <div class="form-group col-md-6">
+    <label for="inputAddress2">Nom</label>
+    <input type="text" class="form-control" required id="lname" name="lastName" placeholder="Ahmed" th:value="${admin.lastName}">
+      
+    </div>
+    <div class="form-group col-md-6">
+    <label for="inputAddress2">Prénom</label>
+    <input type="text" class="form-control" id="fname"  required name="firstName" placeholder="chetoui" th:value="${admin.firstName}">
+      
+    </div>
+   </div>
+    <div class="form-row">
+    <div class="form-group col-md-6">
+    
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" name="email" required placeholder="xxx@zzz.hh" th:value="${admin.email}">
+    </div>
+     <div class="form-group col-md-6">
+    
+      <label for="inputEmail4">CIN</label>
+      <input type="text" class="form-control" id="cin" required name="cin" placeholder="BL151551" th:value="${admin.cin}">
+    </div>
+   
+  </div>
+  
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">Date de naissance</label>
+      <input type="date" class="form-control" id="naissance" required name="dateNaissance" th:value="${admin.dateNaissance}">
+    </div>
+    
+    <div class="form-group col-md-6">
+      <label for="inputState">Telephone</label>
+      <input type="tel" class="form-control" id="tel" required name="phone" th:value="${admin.phone}">
+       </div>
+       
+    </div>
+    
+ <div class="form-row">
+ <div class="form-group col-md-12">
+    <label for="inputPassword4">Adresse</label>
+      <input type="text" class="form-control" id="adress"  required name="adresse" placeholder="159,Quartier l'hivernage" th:value="${admin.adresse}">
+  </div>
+  
+  
+    
+
+  <button type="submit" style="text-align:center;margin:30px 50% 0 45%" class="btn btn-success">ajouter</button>
+</form>
+
+
+
+</div>
+</div>
+
+</body>
+</html>

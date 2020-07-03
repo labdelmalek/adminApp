@@ -1,0 +1,328 @@
+ <!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Admin App</title>
+
+<script src="/test.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <link rel="stylesheet" href="/style1.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+ 
+    <ul class="nav navbar-nav">
+      <li class="active"><a th:href="@{agences}">Acceuil</a></li>
+       <li class="active"><a th:href="@{agences}">Agences</a></li>
+       <li class="active"><a th:href="@{banquiers}">Banquiers</a></li>
+        <li class="active"><a th:href="@{admins}">Admins</a></li>
+        
+      
+      
+      
+          </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a th:href="@{logout}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+</nav>
+
+
+
+
+
+<div class="container">
+
+<h1 id="titre">Situation Agence </h1>
+
+
+<div class="container" id="test1">
+<div  class="enfant">Nombre de banquiers<br th:text="${bankers}"></div>
+<div class="enfant" >Solde agence actuel<br th:text="${actuel.soldeagence}"></div>
+<div class="enfant" >Montant global des clients<br th:text="${actuel.soldeclients}"></div>
+<div  class="enfant" >Montant global des credits  <br th:text="${actuel.restecredit}"></div>
+</div>
+<div id="tresy">
+<div id="container3" style="height:100%;width:50%"></div>
+ 
+<div id="comptee" style="height:25%;width:25%"></div>
+<div id="container2" style="height:25%;width:25%" ></div>
+
+
+</div>
+  </div>
+
+
+  
+<script th:inline="javascript">
+
+var pieColors = (function() {
+	//localStorage.setItem("lastname", "Smith");
+	
+  var colors = [],
+    base = Highcharts.getOptions().colors[0],
+    i;
+
+  for (i = 0; i < 10; i += 1) {
+    // Start out with a darkened base color (negative brighten), and end
+    // up with a much brighter color
+    colors.push(Highcharts.color(base).brighten((i - 3) / 7).get());
+  }
+  return colors;
+}());
+
+// Build the chart
+Highcharts.chart('comptee', {
+  chart: {
+    plotBackgroundColor: null,
+    plotBorderWidth: null,
+    plotShadow: false,
+    type: 'pie'
+  },
+  title: {
+    text: 'Graphe sur type de compte'
+  },
+  tooltip: {
+    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+  },
+  accessibility: {
+    point: {
+      valueSuffix: '%'
+    }
+  },
+  plotOptions: {
+    pie: {
+      allowPointSelect: true,
+      cursor: 'pointer',
+      colors: pieColors,
+      dataLabels: {
+        enabled: true,
+        format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+        distance: -50,
+        filter: {
+          property: 'percentage',
+          operator: '>',
+          value: 4
+        }
+      }
+    }
+  },
+  series: [{
+    name: 'Share',
+    data: [{
+        name: 'compte courant',
+        y:[[${couvert}]]
+      },
+      {
+        name: 'compte fermé',
+        y: [[${cferme}]]
+      }
+    ]
+  }]
+});
+
+
+
+
+
+
+
+
+
+
+
+//Make monochrome colors
+var pieColors = (function() {
+  var colors = [],
+    base = Highcharts.getOptions().colors[0],
+    i;
+
+  for (i = 0; i < 10; i += 1) {
+    // Start out with a darkened base color (negative brighten), and end
+    // up with a much brighter color
+    colors.push(Highcharts.color(base).brighten((i - 3) / 7).get());
+  }
+  return colors;
+}());
+
+// Build the chart
+Highcharts.chart('container2', {
+  chart: {
+    plotBackgroundColor: null,
+    plotBorderWidth: null,
+    plotShadow: false,
+    type: 'pie'
+  },
+  title: {
+    text: 'Graphe sur type de compte'
+  },
+  tooltip: {
+    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+  },
+  accessibility: {
+    point: {
+      valueSuffix: '%'
+    }
+  },
+  plotOptions: {
+    pie: {
+      allowPointSelect: true,
+      cursor: 'pointer',
+      colors: pieColors,
+      dataLabels: {
+        enabled: true,
+        format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+        distance: -50,
+        filter: {
+          property: 'percentage',
+          operator: '>',
+          value: 4
+        }
+      }
+    }
+  },
+  series: [{
+    name: 'Share',
+    data: [{
+        name: 'compte cheque',
+        y:[[${cheque}]]
+      },
+      {
+        name: 'compte epargne',
+        y: [[${epargne}]]
+      }
+    ]
+  }]
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Highcharts.chart('container3', {
+
+   
+    
+    xAxis: {
+        type: 'datetime',
+        labels: {
+            format: '{value:%Y-%m-%d}',
+            rotation: 45,
+            align: 'left'
+        },
+    
+        categories: [[${dates}]]
+    },
+
+    yAxis: {
+        title: {
+            text: 'Argent liquide'
+        }
+    },
+    title: {
+        text: "Graphe sur la situation de l'agence"
+      },
+
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+            
+        }
+    },
+
+    series: [ {
+        name: 'Solde agence actuel',
+        data: [[${agence}]]
+     
+
+    }, {
+        name: 'Somme des credits',
+        
+        data: [[${credits}]]
+
+    }, {
+        name: 'montant global des clients',
+       
+        data: [[${clients}]]
+
+    }, {
+        name: 'Difference',
+        
+        data: [[${difference}]]
+
+    } ],
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</script>
+
+
+
+</body>
+</html>

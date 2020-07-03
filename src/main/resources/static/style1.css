@@ -1,0 +1,27 @@
+ .enfant{
+      width:100%;
+      border: 4px solid #87CEEB;
+      margin:10px;
+      font-weight:  bold ;
+      font:18pt;
+      text-align:center;
+      color:	#87CEEB;
+   }
+   #test1{
+   height:100px;
+   display:flex;}
+   #titre{
+   text-align:center;
+   background-color:#87CEEB;
+   color:white;
+   margin:20px;
+   }
+   #container3{
+   border: 1px solid #87CEEB;
+   }
+   
+   #tresy{
+   display :flex;
+  margin-bottom: 100px;
+   }
+    

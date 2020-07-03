@@ -1,0 +1,56 @@
+ <!DOCTYPE HTML>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Admin App</title>
+
+   <link rel="stylesheet" href="/details.css">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+
+
+
+ <div class="container">
+      <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+          <div class="card card-signin my-5">
+            <div class="card-body">
+              <h5 class="card-title text-center">Sign In</h5>
+              
+              <form  th:action="@{authen}" method="post">
+               <!--  --> <div class="form-label-group">
+                  <input   type="email"   name="email" required th:value="${login.email}" id="inputEmail" class="form-control" placeholder="Email ">
+                  <label for="inputEmail"  ></label>
+       
+                </div>
+  
+                <div class="form-label-group">
+                  <input  type="password"  name="password" required th:value="${login.password}"id="inputPassword" class="form-control" placeholder="Password"  >
+                  <label for="inputPassword" ></label>
+                <!--    <div *ngIf="(Password.invalid && Password.touched) || Password.dirty">
+                    <small *ngIf="Password.errors?.required" class="text-danger">The password is required</small>
+                  </div>-->
+                </div>
+  
+                <button class="btn btn-lg btn-primary btn-block text-uppercase"    type="submit">Sign in</button>
+                <hr class="my-4">
+                <div class="text-danger" >
+                  
+                </div>
+                    </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+</html>

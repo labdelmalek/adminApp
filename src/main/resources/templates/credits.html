@@ -1,0 +1,100 @@
+ <!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Admin App</title>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+ <!--  <th:block th:include="/nav"></th:block>-->
+<nav style="border-radius:0;" class="navbar navbar-inverse">
+ 
+  
+    <ul class="nav navbar-nav">
+      <li class="active"><a th:href="@{agences}">Acceuil</a></li>
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" th:href="@{agences}">Agence
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{postagence}">Ajouter agence</a></li>
+         
+          <li><a th:href="@{agences}">Agences</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" th:href="@{banquiers}">Banquier
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{postbanquier}">Ajouter banquier</a></li>
+          <li><a th:href="@{banquiers}">Acceder aux banquiers</a></li>
+         
+        </ul>
+      </li>
+      
+      
+     <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" th:href="@{admins}">Admin
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{postadmin}">Ajouter Admin</a></li>
+          <li><a th:href="@{admins}">Acceder aux admins</a></li>
+         
+        </ul>
+      </li>
+      
+      
+      
+      
+          </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a th:href="@{logout}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  
+</nav>
+<div class="container">
+<table  class="table">
+<thead>
+<tr>
+<th>id</th>
+<th>Mensualité</th>
+<th> Nombre de mois</th>
+<th>Somme</th>
+
+<th> Action</th>
+</tr>
+
+</thead>
+<tbody>
+<tr th:each="p:${credits}">
+<td style="vertical-align:middle;" th:text="${p.id}"></td>
+<td style="vertical-align:middle;" th:text="${p.mensualite}"></td>
+<td style="vertical-align:middle;" th:text="${p.nbmois}"></td>
+
+<td style="vertical-align:middle;" th:text="${p.somme}"></td>
+
+
+<td ><button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Voir dossier de crédit"><a style="text-decoration: none;color:white" th:href="@{detailss(ida=${p.id})}"><img style="width:30px;height:auto;" src="../img/credit.png"></a></button>
+
+
+
+
+
+</tr>
+
+
+</tbody>
+
+
+
+
+</table>
+</div>
+</body>
+</html>

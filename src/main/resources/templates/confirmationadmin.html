@@ -1,0 +1,97 @@
+ <!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Admin App</title>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+ <!--  <th:block th:include="/nav"></th:block>-->
+<nav style="border-radius: 0;" class="navbar navbar-inverse">
+  <div class="container-fluid">
+  
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Acceuil</a></li>
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Agence
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{postagence}">Ajouter agence</a></li>
+          <li><a th:href="@{signin}">Acceder credits</a></li>
+          <li><a th:href="@{agences}">Agences</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Banquier
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{postbanquier}">Ajouter banquier</a></li>
+          <li><a th:href="@{banquiers}">Acceder aux banquiers</a></li>
+         
+        </ul>
+      </li>
+      
+      
+     <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{postadmin}">Ajouter Admin</a></li>
+          <li><a th:href="@{admins}">Acceder aux admins</a></li>
+         
+        </ul>
+      </li>
+      
+      
+      
+      
+          </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a th:href="@{logout}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+
+<div class="panel panel-default">
+<div class="panel-heading">Confirmation de l'action sur l'objet dont les informations sont :</div>
+<div class="panel-body">
+
+<div class="form-group">
+<label>Prenom :</label>
+<label th:text="${test.firstName}"></label>
+
+</div><div class="form-group">
+<label>Nom :</label>
+<label th:text="${test.lastName}"></label>
+
+</div><div class="form-group">
+<label>Adresse :</label>
+<label th:text="${test.adresse}"></label>
+
+</div><div class="form-group">
+<label>Email :</label>
+<label th:text="${test.email}"></label>
+
+</div><div class="form-group">
+<label>Phone :</label>
+<label th:text="${test.phone}"></label>
+
+</div>
+
+
+
+
+</div>
+</div>
+</div>
+
+
+</body>
+</html>
